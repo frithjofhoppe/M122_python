@@ -4,7 +4,7 @@ def fibonacci(counter, a, b):
     aa = a
     bb = b
     if(localcounter == 0):
-        return (aa)
+        return aa
     else:
         localcounter -= 1
         aa, bb = bb, aa + bb
