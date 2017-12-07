@@ -6,8 +6,8 @@ cpu = listecpuinfo.getcpuinfo()
 
 vendor = cpu[1]
 model = cpu[4]
-mhz = cpu[6]
-cach = cpu[7]
+mhz = cpu[7]
+cach = cpu[8]
 
 # print(vendor+model+mhz+cach)
 #
@@ -22,33 +22,36 @@ toReturn = ""
 
 print(sys.argv)
 # Ersterr Eintrag aus der Liste beinhaltet den Namen der Datei
-for eachArg in sys.argv:
-    if(str(eachArg) == "vendor"):
-        toReturn += vendor
-    elif(eachArg == "model"):
-        toReturn += model
-    elif(eachArg == "mhz"):
-        toReturn += mhz
-    elif(eachArg == "cache"):
-        toReturn += cach
-    elif(eachArg == "freememory"):
+for arg in sys.argv:
+
+    value = str(arg)
+
+    if(value == "vendor"):
+        toReturn += str(vendor)
+    elif(value == "model"):
+        toReturn += str(model)
+    elif(value == "mhz"):
+        toReturn += str(mhz)
+    elif(value == "cache"):
+        toReturn += str(cach)
+    elif(value == "freememory"):
         toReturn += ram.getFreeRam()
-    elif(eachArg == "totalmemory"):
+    elif(value == "totalmemory"):
         toReturn += ram.getTotalRam()
-    elif(eachArg == "buffers"):
+    elif(value == "buffers"):
         toReturn += ram.getBuffers()
-    elif(eachArg == "cached"):
+    elif(value == "cached"):
         toReturn += ram.getCache()
-    else:
-        print("./systeminfo.py <options>")
-        print("Arguments:")
-        print("venodr")
-        print("model")
-        print("mhz")
-        print("cache")
-        print("freememory")
-        print("totalmemory")
-        print("buffers")
-        print("cached")
+    # else:
+    #     print("./systeminfo.py <options>")
+    #     print("Arguments:")
+    #     print("venodr")
+    #     print("model")
+    #     print("mhz")
+    #     print("cache")
+    #     print("freememory")
+    #     print("totalmemory")
+    #     print("buffers")
+    #     print("cached")
 
 print(toReturn)
