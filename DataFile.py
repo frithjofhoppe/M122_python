@@ -12,11 +12,26 @@ class DataFile(object):
         return self.strPath
 
     def appendEntry(self, strEntry):
-        if self.fileExists():
-            c = csv.writer(open(self.strPath))
-            arEntry = str.split(';', strEntry)
-            c.writerRow([arEntry[0], arEntry[1], arEntry[2]])
+        with open(self.strPath, "a") as csvFile:
+            if self.fileExists():
+                c = csv.writer(csvFile, delimiter = ';')
+                arEntry = strEntry.split(';')
+                c.writerow(['a','b','c'])
 
+    def removeEntryByColumnAndIdentifier(self, column, identifier):
+        with open(self.strPath,'w+') as csvFile:
+            if self.fileExists():
+                c = csv.writer(csvFile, delimiter=';')
+                originFile = []
+                rowToRemove = 0
+                for row in c:
+                    originFile.append(row)
+                    attributeCounter = 0
+                    for attribute in row:
+                        if(attributeCounter == column and attribute == identifier):
+                            rowToRemove = attributeCounter
+                originFile.pop(rowToRemove)
+                print ('finished')
 
     def getRowCout(self):
         if(self.fileExists()):
