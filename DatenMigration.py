@@ -13,6 +13,7 @@ with open('Data1.csv', newline='') as file:
         entityMessage = 'Concerned:'
         for entry in entity:
             if(entityCount == 0):
+                result = val.addressNumber(entry)
                 if(not val.addressNumber(entry)):
                     entityValid = False
                     entityMessage+=",AddressNumber"
