@@ -11,4 +11,5 @@ for line in read:
     print(val.birthday(line[2]))
 
 # writer = csv.writer(file, delimiter=';', quotechar='\'')
+
 # writer.writerow(['5','023 465 7894','mx@test.ch'])
